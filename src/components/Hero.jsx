@@ -7,14 +7,16 @@ const Hero = () => {
     const fullText = "I build things for the web.";
 
     // Scroll & Scatter Logic
-    const [scrollStats, setScrollStats] = useState({ opacity: 1, y: 0 });
+    const [scrollStats, setScrollStats] = useState({ opacity: 1, imgOpacity: 1, y: 0 });
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
-            // Scatter starts immediately on scroll, fades out by 500px
+            // Scatter starts immediately on scroll, fades out by 600px
             const opacity = Math.max(0, 1 - scrollY / 600);
-            setScrollStats({ opacity, y: scrollY });
+            // Profile image fades out much faster (by 300px)
+            const imgOpacity = Math.max(0, 1 - scrollY / 300);
+            setScrollStats({ opacity, imgOpacity, y: scrollY });
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -78,7 +80,7 @@ const Hero = () => {
                 </div>
 
                 <div className="hero-image-container fade-in-up"
-                    style={{ ...getStyle(0.5, 0.5, 0.05), animationDelay: '0.6s' }}>
+                    style={{ ...getStyle(0.5, 0.5, 0.05), opacity: scrollStats.imgOpacity, animationDelay: '0.6s' }}>
                     <div className="image-wrapper">
                         <img src={profileImg} alt="Omprakash Singh" className="profile-img" />
                         <div className="img-overlay"></div>
