@@ -1,32 +1,46 @@
+.experience-section {
+    padding: 100px 0;
+}
+
 .experience-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
+    /* Increased spacing for timeline flow */
     position: relative;
-    padding-left: 1.5rem;
-    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+    /* Glowing Circuit Line */
+    border-left: 2px solid rgba(56, 189, 248, 0.2);
+    box-shadow: -1px 0 10px rgba(56, 189, 248, 0.1);
 }
 
 .job-card {
     position: relative;
+    transition: all 0.3s ease;
 }
 
+/* Glowing Circuit Node */
 .job-card::before {
     content: "";
     position: absolute;
-    left: -2.05rem;
-    /* Align dot on the border line */
+    left: -2.4rem;
+    /* Perfectly aligned on the 2px border */
     top: 0.5rem;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background-color: var(--bg-primary);
     border: 2px solid var(--accent);
     border-radius: 50%;
-    transition: background-color 0.3s ease;
+    /* Node */
+    box-shadow: 0 0 10px var(--accent);
+    transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .job-card:hover::before {
     background-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+    transform: scale(1.2);
 }
 
 .job-header {
@@ -34,15 +48,22 @@
 }
 
 .job-header h3 {
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 600;
     margin-bottom: 0.25rem;
+    color: var(--text-primary);
+    font-family: var(--font-main);
 }
 
 .job-duration {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     font-family: var(--font-mono);
+    background: rgba(56, 189, 248, 0.1);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 0.5rem;
 }
 
 .job-points {
@@ -55,7 +76,7 @@
     position: relative;
     padding-left: 1.5rem;
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 .job-points li::before {
@@ -63,15 +84,24 @@
     position: absolute;
     left: 0;
     color: var(--accent);
+    font-family: var(--font-mono);
+}
+
+/* Hover effect on content */
+.job-card:hover .job-header h3 {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 @media (max-width: 768px) {
     .experience-list {
-        padding-left: 0;
-        border-left: none;
+        padding-left: 1.5rem;
+        border-left: 1px solid rgba(56, 189, 248, 0.2);
     }
 
     .job-card::before {
-        display: none;
+        left: -1.85rem;
+        width: 10px;
+        height: 10px;
     }
 }

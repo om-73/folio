@@ -4,7 +4,9 @@ const Achievements = () => {
     return (
         <section id="achievements">
             <div className="container" style={{ maxWidth: '800px' }}>
-                <h2 className="section-title"><span className="text-accent">06.</span> Achievements</h2>
+                <h2 className="section-title">
+                    <span className="text-accent">06.</span> <span className="glitch-text" data-text="Achievements">Achievements</span>
+                </h2>
                 <div className="glass-card">
                     <ul style={{ listStyle: 'none' }}>
                         <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>

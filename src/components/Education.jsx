@@ -4,7 +4,9 @@ const Education = () => {
     return (
         <section id="education">
             <div className="container" style={{ maxWidth: '800px' }}>
-                <h2 className="section-title"><span className="text-accent">05.</span> Education</h2>
+                <h2 className="section-title">
+                    <span className="text-accent">05.</span> <span className="glitch-text" data-text="Education">Education</span>
+                </h2>
                 <div className="glass-card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: '1rem' }}>
                         <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>D Y Patil University, Pune</h3>

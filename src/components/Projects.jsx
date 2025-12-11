@@ -29,7 +29,9 @@ const Projects = () => {
     return (
         <section id="projects" className="projects-section">
             <div className="container">
-                <h2 className="section-title"><span className="text-accent">03.</span> Some Things I've Built</h2>
+                <h2 className="section-title">
+                    <span className="text-accent">03.</span> <span className="glitch-text" data-text="Some Things I've Built">Some Things I've Built</span>
+                </h2>
                 <div className="projects-grid">
                     {projects.map((project, index) => (
                         <div key={index} className="glass-card project-card">

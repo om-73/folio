@@ -40,7 +40,9 @@ const Experience = () => {
     return (
         <section id="experience" className="experience-section">
             <div className="container">
-                <h2 className="section-title"><span className="text-accent">02.</span> Where I've Worked</h2>
+                <h2 className="section-title">
+                    <span className="text-accent">02.</span> <span className="glitch-text" data-text="Where I've Worked">Where I've Worked</span>
+                </h2>
 
                 <div className="experience-list">
                     {jobs.map((job, index) => (

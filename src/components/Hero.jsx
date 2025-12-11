@@ -25,8 +25,8 @@ const Hero = () => {
     const getStyle = (dirX, dirY, rot = 0) => {
         return {
             opacity: scrollStats.opacity,
-            transform: `translate(${scrollStats.y * dirX}px, ${scrollStats.y * dirY}px) rotate(${scrollStats.y * rot}deg)`,
-            transition: 'transform 0.1s ease-out, opacity 0.1s ease-out' // Smooth out the native scroll jitter
+            transform: `translateY(${scrollStats.y * 0.2}px)`, // Subtle parallax only
+            transition: 'transform 0.1s ease-out, opacity 0.1s ease-out'
         };
     };
 
@@ -46,24 +46,24 @@ const Hero = () => {
 
                 <div className="hero-content">
                     <p className="hero-greeting text-accent fade-in-up"
-                        style={{ ...getStyle(-0.5, -0.5), animationDelay: '0.1s' }}>
+                        style={{ ...getStyle(0, 0), animationDelay: '0.1s' }}>
                         Hi, somewhere in the internet, I'm
                     </p>
                     <h1 className="hero-name fade-in-up"
-                        style={{ ...getStyle(-1, 0), animationDelay: '0.2s' }}>
+                        style={{ ...getStyle(0, 0), animationDelay: '0.2s' }}>
                         Omprakash Singh.
                     </h1>
                     <h2 className="hero-title fade-in-up"
-                        style={{ ...getStyle(1, 0), animationDelay: '0.3s' }}>
+                        style={{ ...getStyle(0, 0), animationDelay: '0.3s' }}>
                         {text}<span className="cursor-blink">|</span>
                     </h2>
                     <p className="hero-description fade-in-up"
-                        style={{ ...getStyle(0, 0.5), animationDelay: '0.4s' }}>
+                        style={{ ...getStyle(0, 0), animationDelay: '0.4s' }}>
                         I'm a Full-Stack Developer based in Pune, India, specializing in building (and occasionally designing) exceptional digital experiences. Currently, I'm focused on building AI-powered marketing tools at <span className="text-accent">Sapman C</span>.
                     </p>
 
                     <div className="hero-cta fade-in-up"
-                        style={{ ...getStyle(0, 1), animationDelay: '0.5s' }}>
+                        style={{ ...getStyle(0, 0), animationDelay: '0.5s' }}>
                         <a href="mailto:om.73.singh@gmail.com" className="btn btn-primary pulse-btn">Get In Touch</a>
                         <div className="social-links">
                             <a href="https://github.com/om-73" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

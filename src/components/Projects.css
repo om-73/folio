@@ -1,20 +1,67 @@
+.projects-section {
+    padding: 100px 0;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .project-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    padding: 2rem;
+    background-color: rgba(15, 23, 42, 0.6);
+    /* Slightly more opaque for tech feel */
+    border-radius: 8px;
+    /* Sharper corners */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.1);
 }
 
+/* Holographic Hover Effect */
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(56, 189, 248, 0.05) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    transform: translateX(100%);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 15px rgba(56, 189, 248, 0.1);
+    border-color: var(--accent);
+}
+
+/* Tech Header in Card */
 .project-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.folder-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--accent);
 }
 
 .project-links {
@@ -24,6 +71,7 @@
 
 .project-links a {
     color: var(--text-secondary);
+    transition: all 0.3s ease;
 }
 
 .project-links a:hover {
@@ -31,35 +79,67 @@
 }
 
 .project-title {
-    color: var(--text-primary);
-    font-size: 1.4rem;
     margin-bottom: 1rem;
-    transition: color 0.3s ease;
-}
-
-.project-card:hover .project-title {
-    color: var(--accent);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .project-description {
     color: var(--text-secondary);
     font-size: 1rem;
-    margin-bottom: 2rem;
-    flex-grow: 1;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .project-tech-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    font-family: monospace;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
 }
 
 .project-tech-list li {
-    background: rgba(56, 189, 248, 0.1);
-    color: var(--accent);
-    padding: 0.25rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 2px 8px;
     border-radius: 4px;
+    background: rgba(56, 189, 248, 0.05);
+    /* Tech tag style */
+}
+
+/* Scanline Overlay on Hover */
+.project-card:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(56, 189, 248, 0.1) 3px,
+            rgba(0, 0, 0, 0) 4px);
+    pointer-events: none;
+    z-index: 0;
+    animation: scanline 4s linear infinite;
+}
+
+@keyframes scanline {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100%;
+    }
 }

@@ -2,10 +2,23 @@ import React, { useState } from 'react';
 import './Contact.css';
 
 const Contact = () => {
+    const [isRecruiter, setIsRecruiter] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         message: ''
     });
+
+    const recruiterTemplate = "Hi, I am reaching out regarding a job opportunity. I reviewed your profile and would like to discuss a potential fit. Please let me know your availability.";
+
+    const handleRecruiterToggle = (e) => {
+        const checked = e.target.checked;
+        setIsRecruiter(checked);
+        if (checked) {
+            setFormData(prev => ({ ...prev, message: recruiterTemplate }));
+        } else {
+            setFormData(prev => ({ ...prev, message: '' }));
+        }
+    };
 
     const handleChange = (e) => {
         setFormData({
@@ -20,7 +33,6 @@ const Contact = () => {
         if (!name || !message) return;
 
         // Construct WhatsApp URL
-        // Format: https://wa.me/PHONE?text=...
         const phoneNumber = "917304804812";
         const text = `Hi, my name is ${name}. ${message}`;
         const encodedText = encodeURIComponent(text);
@@ -32,13 +44,25 @@ const Contact = () => {
     return (
         <section id="contact" className="contact-section">
             <div className="container">
-                <h2 className="section-title contact-title-wrapper"><span className="text-accent">07.</span> What's Next?</h2>
+                <h2 className="section-title contact-title-wrapper">
+                    <span className="text-accent">07.</span> <span className="glitch-text" data-text="What's Next?">What's Next?</span>
+                </h2>
                 <h1 className="contact-heading">Get In Touch</h1>
                 <p className="contact-text">
                     I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                 </p>
 
                 <form className="contact-form" onSubmit={handleSubmit}>
+                    <label className="recruiter-toggle">
+                        <input
+                            type="checkbox"
+                            className="toggle-checkbox"
+                            checked={isRecruiter}
+                            onChange={handleRecruiterToggle}
+                        />
+                        <span className="toggle-label">I am a Recruiter / Hiring</span>
+                    </label>
+
                     <div className="form-group">
                         <label htmlFor="name" className="form-label">Your Name</label>
                         <input
@@ -46,7 +70,7 @@ const Contact = () => {
                             id="name"
                             name="name"
                             className="form-input"
-                            placeholder="John Doe"
+                            placeholder="YOUR NAME"
                             value={formData.name}
                             onChange={handleChange}
                             required
@@ -58,7 +82,7 @@ const Contact = () => {
                             id="message"
                             name="message"
                             className="form-textarea"
-                            placeholder="I'd like to discuss a project..."
+                            placeholder={isRecruiter ? "Template loaded..." : "I'd like to discuss a project..."}
                             value={formData.message}
                             onChange={handleChange}
                             required
@@ -79,8 +103,9 @@ const Contact = () => {
                     </p>
                 </div>
 
-                <a href="mailto:om.73.singh@gmail.com" className="btn" style={{ padding: '0.8rem 1.5rem', fontSize: '0.9rem', opacity: 0.8 }}>
-                    Or Send Email
+                <a href="https://drive.google.com/file/d/1IklQgChIEYZTl-fxfgGC1xRpxdTy-UCI/view?usp=share_link" target="_blank" rel="noopener noreferrer" className="resume-btn">
+                    View Resume
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                 </a>
             </div>
         </section>
