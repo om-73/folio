@@ -98,3 +98,17 @@
         transform: rotate(-45deg) translate(5px, -6px);
     }
 }
+
+/* Resume Button in Navbar */
+.nav-resume-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent) !important;
+    transition: all 0.3s ease;
+}
+
+.nav-resume-btn:hover {
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-2px);
+}
